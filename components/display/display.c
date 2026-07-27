@@ -8,7 +8,7 @@ static TFT_t dev;
 #define SCREEN_WIDTH  240
 #define SCREEN_HEIGHT 300
 
-#define BABY_PINK rgb565( 0xFD , 0xD3 , 0xE4 )
+#define BABY_PINK rgb565( 0xFD , 0xBD , 0xE4 )
 #define FUSCHIA   rgb565( 0xFF , 0x00 , 0xFF )
 #define VIOLET    rgb565( 0x7F , 0x00 , 0xFF )
 #define LAVENDER  rgb565( 0xDF , 0xC5 , 0xFE )
