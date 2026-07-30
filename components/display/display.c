@@ -6,7 +6,7 @@ static TFT_t dev;
 //#define BAR_HEIGHT
 
 #define SCREEN_WIDTH  240
-#define SCREEN_HEIGHT 300
+#define SCREEN_HEIGHT 320
 
 #define BABY_PINK rgb565( 0xFD , 0xBD , 0xE4 )
 #define FUSCHIA   rgb565( 0xFF , 0x00 , 0xFF )
