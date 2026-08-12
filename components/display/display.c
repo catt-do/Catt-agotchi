@@ -18,9 +18,18 @@ static const uint16_t textColor       = VIOLET;
 static const uint16_t statusbarColor  = FUSCHIA;
 static const uint16_t fillerColor     = BABY_PINK;
 
-void display_init( display_pins_t pins )
+void display_init( const display_pins_t * pins )
 {
-    spi_master_init( &dev , pins.mosi , pins.sclk , pins.cs , pins.dc , pins.reset , pins.bl );
+    spi_master_init(
+        &dev,
+        pins->mosi,
+        pins->sclk,
+        pins->cs,
+        pins->dc,
+        pins->reset,
+        pins->bl
+    );
+
     lcdInit( &dev , SCREEN_WIDTH , SCREEN_HEIGHT , 0 , 0 );
 }
 
