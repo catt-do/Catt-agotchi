@@ -16,6 +16,6 @@ Basically a Tamagotchi but the little creature is replaced by a miniature Catt.
 
  ㅤㅤ❤︎ ESP32
 
- ❤︎ ST7789 240x320 lcd display
+ ㅤㅤ❤︎ ST7789 lcd display
 
    -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
