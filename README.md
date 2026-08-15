@@ -1,18 +1,18 @@
 ㅤㅤ   -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
 
-# README.MD
+## README.MD
 
 Pls read me.
 
 ㅤㅤ   -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
 
-# Catt-agotchi Digital Pet
+## Catt-agotchi Digital Pet
 
 Basically a Tamagotchi but the little creature is replaced by a miniature Catt.
 
    -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
 
-# Components
+## Components
 
  ㅤㅤ♡ ESP32
 
