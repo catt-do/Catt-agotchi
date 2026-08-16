@@ -3,33 +3,40 @@
 #include "esp_log.h"
 #include "buttons.h"
 #include "display.h"
+#include "pins.h"
 
 #define TAG "Main"
 
-static button_t left   = { .pin = GPIO_NUM_4 };
-static button_t right  = { .pin = GPIO_NUM_5 };
-static button_t power  = { .pin = GPIO_NUM_6 };
-static button_t select = { .pin = GPIO_NUM_7 };
+static button_t left   = { .pin = PIN_BUTTON_LEFT   };
+static button_t right  = { .pin = PIN_BUTTON_RIGHT  };
+static button_t power  = { .pin = PIN_BUTTON_POWER  };
+static button_t select = { .pin = PIN_BUTTON_SELECT };
 
 static display_pins_t display_pins = {
-    .mosi  = GPIO_NUM_11,
-    .sclk  = GPIO_NUM_12,
-    .cs    = GPIO_NUM_10,
-    .dc    = GPIO_NUM_9,
-    .reset = GPIO_NUM_8,
-    .bl    = GPIO_NUM_13
+    .mosi  = PIN_DISPLAY_MOSI,
+    .sclk  = PIN_DISPLAY_SCLK,
+    .cs    = PIN_DISPLAY_CS,
+    .dc    = PIN_DISPLAY_DC,
+    .reset = PIN_DISPLAY_RESET,
+    .bl    = PIN_DISPLAY_BL,
 };
 
-void app_main(void)
+void app_main( void )
 {
-    button_init(&left);
-    display_init(&display_pins);
+    button_init( &left );
+    button_init( &right );
+    button_init( &power );
+    button_init( &select );
 
-    for(;;) {
-        if(button_is_pressed(&left)) {
-            ESP_LOGI(TAG, "Button pressed");
+    display_init( &display_pins );
+
+    for( ;; )
+    {
+        if( button_is_pressed( &left) )
+        {
+            ESP_LOGI( TAG, "Button pressed" );
         }
 
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        vTaskDelay( pdMS_TO_TICKS( 1000 ) );
     }
 }
