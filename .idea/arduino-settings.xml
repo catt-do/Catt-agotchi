@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ArduinoSettingsState">
-    <option name="espIdfPath" value="$USER_HOME$/esp/esp-idf" />
-    <option name="comPort" value="cu.debug-console" />
-    <option name="serialPort" value="cu.debug-console" />
-    <option name="activeBackend" value="esp-idf" />
-  </component>
-</project>
