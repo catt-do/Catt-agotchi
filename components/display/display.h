@@ -1,4 +1,5 @@
 #pragma once
+#include "driver/gpio.h"
 #include "catt.h"
 #include "st7789.h"
 

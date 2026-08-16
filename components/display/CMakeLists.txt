@@ -4,4 +4,5 @@ idf_component_register(
     REQUIRES
         st7789
         catt
+        esp_driver_gpio
 )
