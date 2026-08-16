@@ -1,10 +1,10 @@
-ㅤㅤ-------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
+-------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
 
 # Catt-agotchi Digital Pet
 
 Basically a Tamagotchi but the little creature is replaced by a miniature Catt.
 
-   -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
+-------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
 
 # Components
 
@@ -12,4 +12,4 @@ Basically a Tamagotchi but the little creature is replaced by a miniature Catt.
 
  ㅤㅤ♡ ST7789 240x320
 
-   -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
+-------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
