@@ -1,4 +1,6 @@
 #include "display.h"
+#include <stddef.h>
+#include <assert.h>
 
 static TFT_t dev;
 
@@ -20,6 +22,8 @@ static const uint16_t fillerColor     = BABY_PINK;
 
 void display_init( const display_pins_t * pins )
 {
+    assert( pins != NULL );
+
     spi_master_init(
         &dev,
         pins->mosi,
