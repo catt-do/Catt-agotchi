@@ -20,6 +20,6 @@ typedef enum
     DISPLAY_ICON_VAPE,
 } display_icon_t;
 
-void display_init( display_pins_t pins );
+void display_init( const display_pins_t * pins );
 
 void display_render( catt_t * catt , display_icon_t icon );
