@@ -6,8 +6,28 @@ on:
   pull_request:
 
 jobs:
-  build:
+  host-tests:
+    name: Host unit tests
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Run host unit tests
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: v5.5
+          path: '.'
+          command: |
+            cmake -S test -B test/build
+            cmake --build test/build
+            ctest --test-dir test/build --output-on-failure
+
+  esp-idf-build:
+    name: ESP-IDF build
+    runs-on: ubuntu-latest
+
     strategy:
       matrix:
         idf_target: ["esp32s3"]
