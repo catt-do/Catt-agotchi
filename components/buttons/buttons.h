@@ -6,8 +6,8 @@
 typedef struct
 {
     gpio_num_t pin;
-} button_t;
+}   button_t;
 
-void button_init(button_t* button);
+void button_init( button_t * button);
 
-bool button_is_pressed(button_t* button);
+bool button_is_pressed( button_t * button);

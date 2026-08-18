@@ -43,7 +43,7 @@ void catt_give_milk( catt_t * catt )
     catt->fullness = clamp( catt->fullness + STAT_REPLENISH , 0 , 100 );
 }
 
-void catt_give_vape( catt_t * catt )
+void catt_give_heart( catt_t * catt )
 {
     assert( catt != NULL );
     catt->happiness = clamp( catt->happiness + STAT_REPLENISH , 0 , 100 );
