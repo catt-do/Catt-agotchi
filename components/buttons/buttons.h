@@ -10,4 +10,4 @@ typedef struct
 
 void button_init( button_t * button);
 
-bool button_is_pressed( button_t * button);
+bool button_is_pressed( button_t * button );

@@ -25,11 +25,11 @@ void display_init( const display_pins_t * pins )
     assert( pins != NULL );
 
     spi_master_init(
-        &dev,
-        pins->mosi,
-        pins->sclk,
-        pins->cs,
-        pins->dc,
+        &dev       ,
+        pins->mosi ,
+        pins->sclk ,
+        pins->cs   ,
+        pins->dc   ,
         pins->reset,
         pins->bl
     );

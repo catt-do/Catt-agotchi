@@ -24,9 +24,9 @@ static uint8_t decrease( uint8_t val , uint8_t decrement )
 
 void catt_init( catt_t * catt )
 {
-    catt->fullness  = STARTING_FULLNESS;
+    catt->fullness  = STARTING_FULLNESS ;
     catt->happiness = STARTING_HAPPINESS;
-    catt->wellness  = STARTING_WELLNESS;
+    catt->wellness  = STARTING_WELLNESS ;
 }
 
 void catt_stat_decrease( catt_t * catt )

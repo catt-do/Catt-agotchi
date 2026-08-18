@@ -5,20 +5,20 @@
 
 typedef struct
 {
-    gpio_num_t mosi;
-    gpio_num_t sclk;
-    gpio_num_t cs;
-    gpio_num_t dc;
+    gpio_num_t mosi ;
+    gpio_num_t sclk ;
+    gpio_num_t cs   ;
+    gpio_num_t dc   ;
     gpio_num_t reset;
-    gpio_num_t bl;
+    gpio_num_t bl   ;
 } display_pins_t;
 
 typedef enum
 {
-    DISPLAY_ICON_NONE,
-    DISPLAY_ICON_MILK,
-    DISPLAY_ICON_MEDS,
-    DISPLAY_ICON_VAPE,
+    DISPLAY_ICON_NONE ,
+    DISPLAY_ICON_MILK ,
+    DISPLAY_ICON_MEDS ,
+    DISPLAY_ICON_HEART,
 } display_icon_t;
 
 void display_init( const display_pins_t * pins );
