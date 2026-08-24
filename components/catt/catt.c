@@ -19,8 +19,8 @@ static uint8_t decrease( uint8_t val , uint8_t decrement )
 #define STARTING_HAPPINESS 50
 #define STARTING_WELLNESS  50
 
-#define STAT_REPLENISH 20
 #define STAT_DECAY      5
+#define STAT_REPLENISH 20
 
 void catt_init( catt_t * catt )
 {

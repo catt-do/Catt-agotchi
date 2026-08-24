@@ -12,7 +12,8 @@ static button_t right  = { .pin = PIN_BUTTON_RIGHT  };
 static button_t power  = { .pin = PIN_BUTTON_POWER  };
 static button_t select = { .pin = PIN_BUTTON_SELECT };
 
-static display_pins_t display_pins = {
+static display_pins_t display_pins =
+{
     .mosi  = PIN_DISPLAY_MOSI ,
     .sclk  = PIN_DISPLAY_SCLK ,
     .cs    = PIN_DISPLAY_CS   ,

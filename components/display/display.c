@@ -10,14 +10,14 @@ static TFT_t dev;
 #define SCREEN_WIDTH  240
 #define SCREEN_HEIGHT 320
 
-#define BABY_PINK rgb565( 0xFD , 0xBD , 0xE4 )
-#define FUSCHIA   rgb565( 0xFF , 0x00 , 0xFF )
 #define VIOLET    rgb565( 0x7F , 0x00 , 0xFF )
+#define FUSCHIA   rgb565( 0xFF , 0x00 , 0xFF )
 #define LAVENDER  rgb565( 0xDF , 0xC5 , 0xFE )
+#define BABY_PINK rgb565( 0xFD , 0xBD , 0xE4 )
 
-static const uint16_t backgroundColor = LAVENDER;
-//static const uint16_t textColor       = VIOLET;
-//static const uint16_t statusbarColor  = FUSCHIA;
+//static const uint16_t textColor       = VIOLET   ;
+//static const uint16_t statusbarColor  = FUSCHIA  ;
+static const uint16_t backgroundColor = LAVENDER ;
 //static const uint16_t fillerColor     = BABY_PINK;
 
 void display_init( const display_pins_t * pins )
