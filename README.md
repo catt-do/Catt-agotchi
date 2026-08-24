@@ -5,4 +5,4 @@ Basically a Tamagotchi but the little creature inside is replaced by a miniature
 
 -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
 
-More details here
+More details [here](docs/design.md)
