@@ -11,14 +11,14 @@ typedef struct
 
 void catt_init(          catt_t * catt );
 
-void catt_stat_decrease( catt_t * catt );
+bool catt_alive(         catt_t * catt );
+
+bool catt_satisfied(     catt_t * catt );
+
+void catt_give_meds(     catt_t * catt );
 
 void catt_give_milk(     catt_t * catt );
 
 void catt_give_heart(    catt_t * catt );
 
-void catt_give_meds(     catt_t * catt );
-
-bool catt_satisfied(     catt_t * catt );
-
-bool catt_alive(         catt_t * catt );
+void catt_stat_decrease( catt_t * catt );
