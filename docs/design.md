@@ -60,27 +60,42 @@ to make a cute "mini Catt (me)" so I did.
 
 ♡ **General Interface Elements:**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;♡
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;♡ be rectangles behind icons and stat bars in the corners of the screen
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;♡
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;♡ each icon highlighted when selected
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;♡
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;♡ about stat bars
 
 -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
 
 ## Other
+
+♡cute case
+
+♡small
+
+♡cute
 
 -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
 # Components
 
 ## Hardware
 
+♡ESP32-S3
+
+♡ST7789 240x300 TFT display
+
 -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
 
 ## Software
 
+♡catt
+
+♡driver
+
 -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
 # Architecture
 
+put in diagram
 
 -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
