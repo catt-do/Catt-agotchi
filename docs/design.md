@@ -67,11 +67,15 @@ to make a cute "mini Catt (me)" so I did.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;♡
 
+## Other
+
 -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
 # Components
 -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
 
+## Hardware
 
+## Software
 
 -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
 # Architecture
