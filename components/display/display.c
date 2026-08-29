@@ -45,7 +45,7 @@ void display_render( catt_t * catt , display_icon_t icon )
     lcdDrawFillRect( &dev , a , b , c ,  d ,              fillerColor );
     lcdDrawFillRect( &dev , a , b , c ,  d ,              fillerColor );
     lcdDrawFillRect( &dev , a , b , c ,  d ,           statusbarColor );
-    lcdDrawFillRect( &dev , a , b , c ,  d ,           statusbarColor );            );
+    lcdDrawFillRect( &dev , a , b , c ,  d ,           statusbarColor );
     lcdDrawFillRect( &dev , a , b , c ,  d ,           statusbarColor );
     lcdDrawFillRect( &dev , a , b , c ,  d , otherstatusbarColor );
     lcdDrawFillRect( &dev , a , b , c ,  d , otherstatusbarColor );
@@ -56,34 +56,50 @@ void display_render( catt_t * catt , display_icon_t icon )
     lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
     lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
     lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
-    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t* Data , size_t DataLength );
-    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t* Data , size_t DataLength );
-    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t* Data , size_t DataLength );
-    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t* Data , size_t DataLength );
+    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
+    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
+    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
+    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
 
 }
 
 static void draw_icons( display_icon_t highlighted )
 {
-    //...
+    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
+    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
+    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
 }
 
 static void draw_catt( catt_t * catt )
 {
-    //...
+    while ( true )
+    {
+        spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
+        spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
+    }
 }
 
 static void draw_statusbar()
 {
-    //...
+    lcdDrawFillRect( &dev , a , b , c ,  d ,           statusbarColor );
+    lcdDrawFillRect( &dev , a , b , c ,  d ,           statusbarColor );
+    lcdDrawFillRect( &dev , a , b , c ,  d ,           statusbarColor );
+    lcdDrawFillRect( &dev , a , b , c ,  d , otherstatusbarColor );
+    lcdDrawFillRect( &dev , a , b , c ,  d , otherstatusbarColor );
+    lcdDrawFillRect( &dev , a , b , c ,  d , otherstatusbarColor );
 }
 
 static void draw_stats()
 {
-    //...
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
 }
 
 static void draw_dead_catt()
 {
-    //...
+    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
 }
