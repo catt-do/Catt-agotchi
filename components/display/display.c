@@ -2,6 +2,8 @@
 #include <stddef.h>
 #include <assert.h>
 
+#include "../st7789/st7789.h"
+
 static TFT_t dev;
 
 //#define BAR_WIDTH
@@ -15,10 +17,10 @@ static TFT_t dev;
 #define LAVENDER  rgb565( 0xDF , 0xC5 , 0xFE )
 #define BABY_PINK rgb565( 0xFD , 0xBD , 0xE4 )
 
-//static const uint16_t textColor       = VIOLET   ;
-//static const uint16_t statusbarColor  = FUSCHIA  ;
+static const uint16_t textColor       = VIOLET   ;
+static const uint16_t statusbarColor  = FUSCHIA  ;
 static const uint16_t backgroundColor = LAVENDER ;
-//static const uint16_t fillerColor     = BABY_PINK;
+static const uint16_t fillerColor     = BABY_PINK;
 
 void display_init( const display_pins_t * pins )
 {
@@ -39,8 +41,26 @@ void display_init( const display_pins_t * pins )
 
 void display_render( catt_t * catt , display_icon_t icon )
 {
-    lcdFillScreen( &dev , backgroundColor );
-    // ...
+    lcdFillScreen(   &dev ,                                       backgroundColor );
+    lcdDrawFillRect( &dev , a , b , c ,  d ,              fillerColor );
+    lcdDrawFillRect( &dev , a , b , c ,  d ,              fillerColor );
+    lcdDrawFillRect( &dev , a , b , c ,  d ,           statusbarColor );
+    lcdDrawFillRect( &dev , a , b , c ,  d ,           statusbarColor );            );
+    lcdDrawFillRect( &dev , a , b , c ,  d ,           statusbarColor );
+    lcdDrawFillRect( &dev , a , b , c ,  d , otherstatusbarColor );
+    lcdDrawFillRect( &dev , a , b , c ,  d , otherstatusbarColor );
+    lcdDrawFillRect( &dev , a , b , c ,  d , otherstatusbarColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
+    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t* Data , size_t DataLength );
+    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t* Data , size_t DataLength );
+    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t* Data , size_t DataLength );
+    spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t* Data , size_t DataLength );
+
 }
 
 static void draw_icons( display_icon_t highlighted )
