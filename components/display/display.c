@@ -17,9 +17,9 @@ static TFT_t dev;
 #define LAVENDER  rgb565( 0xDF , 0xC5 , 0xFE )
 #define BABY_PINK rgb565( 0xFD , 0xBD , 0xE4 )
 
-static const uint16_t textColor       = VIOLET   ;
-static const uint16_t statusbarColor  = FUSCHIA  ;
-static const uint16_t backgroundColor = LAVENDER ;
+static const uint16_t textColor       =    VIOLET;
+static const uint16_t statusbarColor  =   FUSCHIA;
+static const uint16_t backgroundColor =  LAVENDER;
 static const uint16_t fillerColor     = BABY_PINK;
 
 void display_init( const display_pins_t * pins )
@@ -91,12 +91,12 @@ static void draw_statusbar()
 
 static void draw_stats()
 {
-    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
-    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
-    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
-    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
-    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
-    lcdDrawString(   &dev ,  &fx , x ,  y , ascii ,                textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii , textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii , textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii , textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii , textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii , textColor );
+    lcdDrawString(   &dev ,  &fx , x ,  y , ascii , textColor );
 }
 
 static void draw_dead_catt()

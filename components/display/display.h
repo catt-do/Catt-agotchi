@@ -5,12 +5,12 @@
 
 typedef struct
 {
-    gpio_num_t mosi ;
-    gpio_num_t sclk ;
-    gpio_num_t cs   ;
-    gpio_num_t dc   ;
+    gpio_num_t  mosi;
+    gpio_num_t  sclk;
+    gpio_num_t    cs;
+    gpio_num_t    dc;
     gpio_num_t reset;
-    gpio_num_t bl   ;
+    gpio_num_t    bl;
 } display_pins_t;
 
 typedef enum
