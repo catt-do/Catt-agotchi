@@ -2,6 +2,7 @@
 #include <stddef.h>
 #include <assert.h>
 
+#include "../catt/catt.h"
 #include "../st7789/st7789.h"
 
 static TFT_t dev;
@@ -72,10 +73,27 @@ static void draw_icons( display_icon_t highlighted )
 
 static void draw_catt( catt_t * catt )
 {
-    while ( true )
+    if ( catt_satisfied( catt ) )
     {
-        spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
-        spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
+        while ( true )
+        {
+            spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
+            spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
+        }
+    }
+    if ( catt_alive( catt ) )
+    {
+        while ( true )
+        {
+            spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
+            spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
+            spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
+            spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
+        }
+    }
+    else
+    {
+            spi_master_write_byte( spi_device_handle_t SPIHandle , const uint8_t * Data , size_t DataLength );
     }
 }
 
