@@ -85,11 +85,15 @@ to make a cute "mini Catt (me)" so I did.
 
 ♡ST7789 240x300 TFT display
 
+♡buttons
+
 -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
 
 ## Software
 
 ♡catt
+
+♡
 
 ♡driver
 
