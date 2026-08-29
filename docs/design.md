@@ -93,8 +93,6 @@ to make a cute "mini Catt (me)" so I did.
 
 ♡catt
 
-♡
-
 ♡driver
 
 -------˖⁺. ༶ ❤︎ ⋆˙⊹ 𐦍 ˖⁺. ༶ ❤︎ ⋆˙⊹-------
