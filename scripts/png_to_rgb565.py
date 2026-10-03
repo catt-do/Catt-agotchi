@@ -1,13 +1,29 @@
 #!/usr/bin/env python3
 """
-Convert a PNG sprite into a C header with a RGB565 pixel array.
+Convert one or more PNG frames of a sprite into a C header with RGB565 pixel arrays.
+
+Every PNG is authored at display scale (e.g. 240x320) so the sprite sits exactly where
+it appears on screen. The output is cropped to the bounding box of the non-transparent
+pixels of ALL frames, so the sprite keeps its on-screen position (x, y) without
+storing the empty canvas around it. All frames share the same box, which lets the
+display diff consecutive frames pixel for pixel.
 
 Usage:
-    python3 png_to_rgb565.py <input.png> <c_file_name> <target_width> <target_height>
+    python3 png_to_rgb565.py <name> <display_width> <display_height> <frame.png> [<frame.png> ...]
+
+Output: <name>.h with <NAME>_FRAME_COUNT and a `static const sprite_t <name>_frames[]`
 """
 import sys
 import os
 from PIL import Image, UnidentifiedImageError
+
+# Chroma key: fully transparent pixels become this color in output.
+# Must match SPRITE_TRANSPARENT_KEY in components/display/sprite.h
+LIME_GREEN = 0x00FF00
+KEY_R = (LIME_GREEN >> 16) & 0xFF
+KEY_G = (LIME_GREEN >> 8) & 0xFF
+KEY_B = LIME_GREEN & 0xFF
+KEY_RGB565 = ((KEY_R & 0xF8) << 8) | ((KEY_G & 0xFC) << 3) | (KEY_B >> 3)
 
 
 def fail(message):
@@ -16,15 +32,9 @@ def fail(message):
     sys.exit(1)
 
 
-def convert(png_path, name, width, height):
+def load_frame(png_path, width, height):
     if not os.path.isfile(png_path):
         fail(f"input file not found: '{png_path}'")
-
-    if not name.isidentifier():
-        fail(f"'{name}' is not a valid C identifier")
-
-    if width <= 0 or height <= 0:
-        fail(f"width and height must be positive, got {width}x{height}")
 
     try:
         img = Image.open(png_path)
@@ -33,42 +43,74 @@ def convert(png_path, name, width, height):
     except OSError as e:
         fail(f"couldn't open '{png_path}': {e}")
 
-    img = img.convert("RGBA").resize((width, height))
+    img = img.convert("RGBA")
+    if img.size != (width, height):
+        img = img.resize((width, height))
+    return img
 
-    # Chroma key: fully transparent pixels become this color in output
-    LIME_GREEN = 0x00FF00
-    KEY_R = (LIME_GREEN >> 16) & 0xFF
-    KEY_G = (LIME_GREEN >> 8) & 0xFF
-    KEY_B = LIME_GREEN & 0xFF
 
+def opaque_bbox(img):
+    # treat mostly transparent pixels as fully transparent
+    alpha = img.getchannel("A").point(lambda a: 255 if a >= 128 else 0)
+    return alpha.getbbox()  # (left, top, right, bottom) or None
+
+
+def to_rgb565(img, box):
     pixels = []
-    for y in range(height):
-        for x in range(width):
+    left, top, right, bottom = box
+    for y in range(top, bottom):
+        for x in range(left, right):
             r, g, b, a = img.getpixel((x, y))
-            if a < 128:  # treat mostly transparent pixels as fully transparent
-                r, g, b = KEY_R, KEY_G, KEY_B
-            rgb565 = ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3)
-            pixels.append(rgb565)
+            if a < 128:
+                pixels.append(KEY_RGB565)
+            else:
+                pixels.append(((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3))
+    return pixels
+
+
+def convert(name, width, height, png_paths):
+    if not name.isidentifier():
+        fail(f"'{name}' is not a valid C identifier")
+
+    if width <= 0 or height <= 0:
+        fail(f"width and height must be positive, got {width}x{height}")
+
+    frames = [load_frame(p, width, height) for p in png_paths]
+
+    boxes = [b for b in (opaque_bbox(f) for f in frames) if b is not None]
+    if not boxes:
+        fail("every frame is fully transparent")
+    box = (min(b[0] for b in boxes), min(b[1] for b in boxes),
+           max(b[2] for b in boxes), max(b[3] for b in boxes))
+    box_w = box[2] - box[0]
+    box_h = box[3] - box[1]
 
     out_path = f"{name}.h"
     try:
         with open(out_path, "w") as f:
             f.write("#pragma once\n")
-            f.write("#include <stdint.h>\n\n")
-            f.write(f"#define {name.upper()}_WIDTH  {width}\n")
-            f.write(f"#define {name.upper()}_HEIGHT {height}\n")
-            key_rgb565 = ((KEY_R & 0xF8) << 8) | ((KEY_G & 0xFC) << 3) | (KEY_B >> 3)
-            f.write(f"#define {name.upper()}_TRANSPARENT_KEY 0x{key_rgb565:04X}\n\n")
-            f.write(f"static const uint16_t {name}_data[{width} * {height}] = {{\n")
-            for i in range(0, len(pixels), 12):
-                row = pixels[i:i + 12]
-                f.write("    " + ", ".join(f"0x{p:04X}" for p in row) + ",\n")
+            f.write("#include <stdint.h>\n")
+            f.write('#include "sprite.h"\n\n')
+            f.write(f"#define {name.upper()}_FRAME_COUNT {len(frames)}\n\n")
+
+            for i, frame in enumerate(frames):
+                pixels = to_rgb565(frame, box)
+                f.write(f"static const uint16_t {name}_frame_{i}[{box_w} * {box_h}] = {{\n")
+                for j in range(0, len(pixels), 12):
+                    row = pixels[j:j + 12]
+                    f.write("    " + ", ".join(f"0x{p:04X}" for p in row) + ",\n")
+                f.write("};\n\n")
+
+            f.write(f"static const sprite_t {name}_frames[{name.upper()}_FRAME_COUNT] = {{\n")
+            for i in range(len(frames)):
+                f.write(f"    {{ {box[0]}, {box[1]}, {box_w}, {box_h}, {name}_frame_{i} }},\n")
             f.write("};\n")
     except OSError as e:
         fail(f"couldn't write '{out_path}': {e}")
 
-    size_bytes = width * height * 2
-    print(f"Wrote {out_path}  ({width}x{height}, {size_bytes:,} bytes / {size_bytes/1024:.1f} KB)")
+    size_bytes = box_w * box_h * 2 * len(frames)
+    print(f"Wrote {out_path}  ({len(frames)} frames, {box_w}x{box_h} at ({box[0]}, {box[1]}), "
+          f"{size_bytes:,} bytes / {size_bytes/1024:.1f} KB)")
 
 
 def parse_int(value, label):
@@ -79,12 +121,11 @@ def parse_int(value, label):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        fail(f"expected 4 arguments, got {len(sys.argv) - 1}")
+    if len(sys.argv) < 5:
+        fail(f"expected at least 4 arguments, got {len(sys.argv) - 1}")
 
-    png_path = sys.argv[1]
-    name = sys.argv[2]
-    width = parse_int(sys.argv[3], "width")
-    height = parse_int(sys.argv[4], "height")
+    name = sys.argv[1]
+    width = parse_int(sys.argv[2], "width")
+    height = parse_int(sys.argv[3], "height")
 
-    convert(png_path, name, width, height)
+    convert(name, width, height, sys.argv[4:])

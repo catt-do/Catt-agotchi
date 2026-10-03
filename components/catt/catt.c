@@ -15,6 +15,8 @@ static uint8_t decrease( uint8_t val , uint8_t decrement )
     return val - decrement;
 }
 
+#define MAX_STAT 100
+
 #define STARTING_FULLNESS  50
 #define STARTING_HAPPINESS 50
 #define STARTING_WELLNESS  50
@@ -40,19 +42,19 @@ void catt_stat_decrease( catt_t * catt )
 void catt_give_milk( catt_t * catt )
 {
     assert( catt != NULL );
-    catt->fullness = clamp( catt->fullness + STAT_REPLENISH , 0 , 100 );
+    catt->fullness = clamp( catt->fullness + STAT_REPLENISH , 0 , MAX_STAT );
 }
 
 void catt_give_heart( catt_t * catt )
 {
     assert( catt != NULL );
-    catt->happiness = clamp( catt->happiness + STAT_REPLENISH , 0 , 100 );
+    catt->happiness = clamp( catt->happiness + STAT_REPLENISH , 0 , MAX_STAT );
 }
 
 void catt_give_meds( catt_t * catt )
 {
     assert( catt != NULL );
-    catt->wellness = clamp( catt->wellness + STAT_REPLENISH , 0 , 100 );
+    catt->wellness = clamp( catt->wellness + STAT_REPLENISH , 0 , MAX_STAT );
 }
 
 bool catt_satisfied( catt_t * catt )
@@ -67,4 +69,18 @@ bool catt_alive( catt_t * catt )
     assert( catt != NULL );
     if ( catt->fullness == 0 && catt->happiness == 0 && catt->wellness == 0 ) return false;
     return true;
+}
+
+catt_state_t catt_state( catt_t * catt )
+{
+    assert( catt != NULL );
+    if ( !catt_alive( catt ) )     return CATT_DEAD;
+    if ( !catt_satisfied( catt ) ) return CATT_UNSATISFIED;
+    return CATT_SATISFIED;
+}
+
+bool catt_valid( const catt_t * catt )
+{
+    assert( catt != NULL );
+    return catt->fullness <= MAX_STAT && catt->happiness <= MAX_STAT && catt->wellness <= MAX_STAT;
 }

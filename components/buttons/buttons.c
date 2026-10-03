@@ -1,4 +1,5 @@
 #include "buttons.h"
+#include "press_edge.h"
 
 void button_init( button_t * button )
 {
@@ -11,9 +12,15 @@ void button_init( button_t * button )
         .intr_type    = GPIO_INTR_DISABLE     ,
     };
     gpio_config( &config );
+    button->was_down = false;
 }
 
 bool button_is_pressed( button_t * button )
 {
     return gpio_get_level( button->pin ) == 0;
+}
+
+bool button_was_pressed( button_t * button )
+{
+    return button_press_edge( button_is_pressed( button ) , &button->was_down );
 }
